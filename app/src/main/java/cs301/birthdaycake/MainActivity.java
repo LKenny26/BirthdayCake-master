@@ -8,7 +8,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
-import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         CakeView cv = findViewById(R.id.cakeview);
         CakeController cc = new CakeController(cv);
 
-        Button blowOut = findViewById(R.id.blow_out);
+        Button blowOut = findViewById(R.id.extinguish);
         blowOut.setOnClickListener(cc);
 
         CompoundButton candles = findViewById(R.id.candles);
