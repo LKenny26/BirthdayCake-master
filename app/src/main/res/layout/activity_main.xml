@@ -97,10 +97,10 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/blow_out"
+                android:id="@+id/extinguish"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Blow Out" />
+                android:text="Extinguish" />
 
             <Button
                 android:layout_width="match_parent"
