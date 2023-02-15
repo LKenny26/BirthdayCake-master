@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         SeekBar candleCount = findViewById(R.id.candleCount);
         candleCount.setOnSeekBarChangeListener(cc);
+
+        cv.setOnTouchListener(cc);
+        //View.OnTouchListener balloon_move = new View.OnTouchListener();
+
+        //onTouchListener
     }
     public void goodbye(View button){
         Log.i("button","Goodbye");

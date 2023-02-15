@@ -17,6 +17,8 @@ public class CakeView extends SurfaceView {
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
 
+    Paint ballooney = new Paint();
+
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
         and adapting to different tablets' screen sizes and resolutions.  I've deliberately
@@ -33,6 +35,8 @@ public class CakeView extends SurfaceView {
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
+
+    public static final float balWidth = 200.0f;
     private CakeModel cm;
 
 
@@ -99,6 +103,13 @@ public class CakeView extends SurfaceView {
 
     }
 
+    public void drawBalloon(Canvas canvas){
+        ballooney.setColor(Color.BLACK);
+        canvas.drawRect(cm.x - 10, cm.y, cm.x + 10, cm.y+500, ballooney);
+        ballooney.setColor(Color.BLUE);
+        canvas.drawOval(cm.x - balWidth/4, cm.y, cm.x + balWidth/4, cm.y + balWidth/4 + 100, ballooney);
+    }
+
     /**
      * onDraw is like "paint" in a regular Java program.  While a Canvas is
      * conceptually similar to a Graphics in javax.swing, the implementation has
@@ -134,6 +145,10 @@ public class CakeView extends SurfaceView {
         //Now a candle in the center
         for (int i = 1; i <= cm.numCandles; i++) {
             drawCandle(canvas, cakeLeft + cakeWidth * i / (cm.numCandles + 1) - candleWidth / 2, cakeTop);
+        }
+
+        if(cm.balloon == true){
+            drawBalloon(canvas);
         }
 
     }//onDraw
