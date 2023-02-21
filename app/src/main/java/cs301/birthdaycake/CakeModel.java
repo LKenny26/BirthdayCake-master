@@ -7,4 +7,5 @@ public class CakeModel {
     public boolean candles = true;
     public float x;
     public float y;
+
 }

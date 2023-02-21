@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         cv.setOnTouchListener(cc);
 
+
     }
     public void goodbye(View button){
         Log.i("button","Goodbye");

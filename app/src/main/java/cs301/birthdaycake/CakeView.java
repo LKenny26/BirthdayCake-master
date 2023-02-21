@@ -18,6 +18,7 @@ public class CakeView extends SurfaceView {
     Paint wickPaint = new Paint();
     Paint coords = new Paint();
 
+
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
         and adapting to different tablets' screen sizes and resolutions.  I've deliberately
