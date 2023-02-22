@@ -19,6 +19,7 @@ public class CakeView extends SurfaceView {
     Paint coords = new Paint();
 
     Paint ballooney = new Paint();
+    Paint sqr = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -77,7 +78,7 @@ public class CakeView extends SurfaceView {
 
     public void drawBalloon(Canvas canvas){
         ballooney.setColor(Color.BLACK);
-        canvas.drawRect(cm.x - 10, cm.y, cm.x + 10, cm.y+500, ballooney);
+        canvas.drawRect(cm.x - 10, cm.y+100, cm.x + 10, cm.y+500, ballooney);
         ballooney.setColor(Color.BLUE);
         canvas.drawOval(cm.x - balWidth/4, cm.y, cm.x + balWidth/4, cm.y + balWidth/4 + 100, ballooney);
     }
@@ -86,6 +87,17 @@ public class CakeView extends SurfaceView {
         coords.setColor(Color.RED);
         coords.setTextSize(70.0f);
         canvas.drawText(cm.x + ", " + cm.y, 1300.0f, 600.0f, coords);
+    }
+
+    public void drawSquare(Canvas canvas) {
+        sqr.setColor(Color.BLACK);
+        canvas.drawRect(cm.x - 30, cm.y - 30, cm.x, cm.y, sqr);
+        canvas.drawRect(cm.x , cm.y, cm.x + 30, cm.y + 30, sqr);
+
+        sqr.setColor(Color.YELLOW);
+        canvas.drawRect(cm.x, cm.y - 30, cm.x + 30, cm.y, sqr);
+        canvas.drawRect(cm.x - 30, cm.y , cm.x, cm.y+ 30, sqr);
+
     }
     /**
      * draws a candle at a specified position.  Important:  the left, bottom coordinates specify
@@ -158,6 +170,10 @@ public class CakeView extends SurfaceView {
 
         if(cm.balloon) {
             drawBalloon(canvas);
+        }
+
+        if(cm.square){
+            drawSquare(canvas);
         }
 
 
