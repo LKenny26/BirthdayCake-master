@@ -18,6 +18,7 @@ public class CakeView extends SurfaceView {
     Paint wickPaint = new Paint();
     Paint coords = new Paint();
 
+    Paint ballooney = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -35,6 +36,7 @@ public class CakeView extends SurfaceView {
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
+    public static final float balWidth = 200.0f;
     private CakeModel cm;
 
 
@@ -73,6 +75,18 @@ public class CakeView extends SurfaceView {
         return cm;
     }
 
+    public void drawBalloon(Canvas canvas){
+        ballooney.setColor(Color.BLACK);
+        canvas.drawRect(cm.x - 10, cm.y, cm.x + 10, cm.y+500, ballooney);
+        ballooney.setColor(Color.BLUE);
+        canvas.drawOval(cm.x - balWidth/4, cm.y, cm.x + balWidth/4, cm.y + balWidth/4 + 100, ballooney);
+    }
+
+    public void drawCoords(Canvas canvas) {
+        coords.setColor(Color.RED);
+        coords.setTextSize(70.0f);
+        canvas.drawText(cm.x + ", " + cm.y, 1300.0f, 600.0f, coords);
+    }
     /**
      * draws a candle at a specified position.  Important:  the left, bottom coordinates specify
      * the position of the bottom left corner of the candle
@@ -138,9 +152,14 @@ public class CakeView extends SurfaceView {
             drawCandle(canvas, cakeLeft + cakeWidth * i / (cm.numCandles + 1) - candleWidth / 2, cakeTop);
         }
 
-        coords.setColor(Color.RED);
-        coords.setTextSize(70.0f);
-        canvas.drawText(cm.x + ", " + cm.y, 1300.0f, 600.0f, coords);
+        if(cm.coords) {
+            drawCoords(canvas);
+        }
+
+        if(cm.balloon) {
+            drawBalloon(canvas);
+        }
+
 
     }//onDraw
 

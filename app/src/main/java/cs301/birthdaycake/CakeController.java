@@ -5,6 +5,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
+import android.view.MotionEvent;
+
 
 public class CakeController implements View.OnClickListener, CompoundButton.OnCheckedChangeListener,
         SeekBar.OnSeekBarChangeListener, View.OnTouchListener{
@@ -51,8 +53,11 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
     public boolean onTouch(View view, MotionEvent motionEvent) {
         cm.x = motionEvent.getX();
         cm.y = motionEvent.getY();
+        cm.coords = true;
+        cm.balloon = true;
 
         cv.invalidate();
+
         return false;
     }
 }
